@@ -4,17 +4,17 @@ See https://twitter.com/penx/status/1430896114597728259
 
 To get started, run
 
-```
+```sh
 yarn
 yarn cypress open-ct
 ```
 
-In Button.spec.jsx I have commented out:
+In Button.spec.jsx I have:
 
-```
-cy.get('@consoleError').to.have.callCount(0);
+```js
+  cy.get('@consoleError').should('not.be.called')
 ```
 
-If I uncomment this, it fails with "Cannot read property 'have' of undefined" due to the stub not existing. I don't know how to stub console.error in component testing due to not having access to onBeforeLoad or the window object.
+This fails with "could not find a registered alias for: @consoleError" due to the stub not existing. I don't know how to stub console.error in component testing due to not having access to onBeforeLoad or the window object.
 
 Once stubbed correctly, I would expect the test to fail, as my Button component throws an error to the console.

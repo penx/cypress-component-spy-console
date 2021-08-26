@@ -9,5 +9,5 @@ it('Button', () => {
     },
   })
   cy.get('button').contains('Test button').click()
-  // cy.get('@consoleError').to.have.callCount(0);
+  cy.get('@consoleError').should('not.be.called')
 })
